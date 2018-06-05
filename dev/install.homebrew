@@ -2,7 +2,6 @@ awscli
 dpkg
 gdub
 gradle-completion
-jenv
 node
 python
 ruby
