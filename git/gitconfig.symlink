@@ -1,7 +1,7 @@
 [include]
     path = ~/.gitconfig_local
 [core]
-    excludesfile = ~/.gitignore_global
+	excludesfile = /Users/mchalupa/.gitignore_global
     pager = "diff-so-fancy | less --tabs=4 -RFX"
 [diff-so-fancy]
     markEmptyLines = false
@@ -120,3 +120,9 @@
 
     #grumble
     ffs = "!git all && git commit --amend"
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
