@@ -29,10 +29,13 @@ bb_clone() {
     
     REPO=$(echo "$1" | cut -d '/' -f 2)
     POSSIBLE_FORK="ssh://git@$BB_HOST/$BB_FORK_SPACE/$REPO.git"
-    git ls-remote "$POSSIBLE_FORK" --exit-code
+    git ls-remote "$POSSIBLE_FORK" --exit-code &> /dev/null
     if [ $? = 0 ]; then
+        echo "Fork found. Origin will be $POSSIBLE_FORK"
         git remote rename origin upstream
         git remote add origin $POSSIBLE_FORK
+    else
+        echo "No fork found."
     fi
 }
 
