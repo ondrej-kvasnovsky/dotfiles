@@ -19,6 +19,14 @@ gh_browse() {
 gh_clone() {
     git clone "ssh://git@github.com/$1.git" ~/Projects/github/$1
     gh_cd "$1"
+
+    REPO=$(echo "$1" | cut -d '/' -f 2)
+    POSSIBLE_FORK="ssh://git@github.com/$GH_USER/$REPO.git"
+    git ls-remote "$POSSIBLE_FORK" --exit-code
+    if [ $? = 0 ]; then
+        git remote rename origin upstream
+        git remote add origin $POSSIBLE_FORK
+    fi
 }
 
 gh_cd() {

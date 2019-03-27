@@ -24,7 +24,16 @@ bb_browse() {
 bb_clone() {
     : ${BB_HOST?"BB_HOST must be set"}
     git clone "ssh://git@$BB_HOST/$1.git" ~/Projects/bb/$1
+    
     bb_cd "$1"
+    
+    REPO=$(echo "$1" | cut -d '/' -f 2)
+    POSSIBLE_FORK="ssh://git@$BB_HOST/$BB_FORK_SPACE/$REPO.git"
+    git ls-remote "$POSSIBLE_FORK" --exit-code
+    if [ $? = 0 ]; then
+        git remote rename origin upstream
+        git remote add origin $POSSIBLE_FORK
+    fi
 }
 
 bb_cd() {

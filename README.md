@@ -6,3 +6,4 @@ Manually
 
 Clean my mac
 One note
+Magnet
