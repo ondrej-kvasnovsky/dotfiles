@@ -6,6 +6,7 @@ gh_help(){
     echo "    browse   Open a GitHub project page in the default browser"
     echo "    cd       Go to the directory of the specified repository"
     echo "    clone    Clone a remote repository"
+    echo "    uf       Updates master from upstream and pushes it to fork"
     echo ""
     echo "For help with each subcommand run:"
     echo "gh <subcommand> -h|--help"
@@ -30,6 +31,17 @@ gh_clone() {
     else
         echo "No fork found."
     fi
+}
+
+gh_uf() {
+    echo ‘git checkout master’
+    git checkout master
+    echo ‘git fetch upstream’
+    git fetch upstream
+    echo ‘git merge upstream/master’
+    git merge upstream/master
+    echo ‘git push origin master’
+    git push origin master
 }
 
 gh_cd() {
