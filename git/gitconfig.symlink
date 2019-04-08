@@ -45,7 +45,7 @@
     c = commit
     cm = commit -m
     cma = commit -a -m
-    ca = commit --amend
+    ca = commit --amend -C HEAD
     commend = commit --amend --no-edit
     
     pm = push origin master
