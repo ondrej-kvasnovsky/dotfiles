@@ -1,2 +1,2 @@
 # added by travis gem
-[ -f /Users/mchalupa/.travis/travis.sh ] && source /Users/mchalupa/.travis/travis.sh
+[ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
