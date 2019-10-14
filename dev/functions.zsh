@@ -6,12 +6,6 @@ function gradleUserHomeLocal() {
     GRADLE_USER_HOME="$(pwd)/.gradle" gw "$@"
 }
 
-function gradle-profiler() {
-	~/.gradle-profiler/gradlew -b ~/.gradle-profiler/build.gradle installDist
-	echo ""
-	~/.gradle-profiler/build/install/gradle-profiler/bin/gradle-profiler "$@"
-}
-
 # Useful for profiling the Gradle launcher and adhoc profiling
 
 function gradleYk() {
