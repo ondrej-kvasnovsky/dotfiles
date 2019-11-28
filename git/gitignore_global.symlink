@@ -5,7 +5,8 @@
 *.iws
 out/
 classes/
-build
+build/
+bin/
 .classpath
 .project
 .settings

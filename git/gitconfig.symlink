@@ -59,6 +59,7 @@
     clb = !git branch -d $(git branch --merged | sed '/master/d' | sed '/*/d') && git remote prune origin
 
     co = checkout
+    sw = switch
     br = branch
     bra = branch -ra
 
