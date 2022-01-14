@@ -1,5 +1,5 @@
 #!/bin/sh
-  
+
 gh_help(){
     echo "Usage: gh <subcommand> [options]\n"
     echo "Subcommands:"
@@ -12,11 +12,11 @@ gh_help(){
     echo "gh <subcommand> -h|--help"
     echo ""
 }
-  
+
 gh_browse() {
     open `git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@'`| head -n1
 }
-  
+
 gh_clone() {
     git clone "ssh://git@github.com/$1.git" ~/Projects/github/$1
     gh_cd "$1"
@@ -34,14 +34,14 @@ gh_clone() {
 }
 
 gh_uf() {
-    echo ‘git checkout master’
-    git checkout master
+    echo ‘git checkout main’
+    git checkout main
     echo ‘git fetch upstream’
     git fetch upstream
-    echo ‘git merge upstream/master’
-    git merge upstream/master
-    echo ‘git push origin master’
-    git push origin master
+    echo ‘git merge upstream/main’
+    git merge upstream/main
+    echo ‘git push origin main’
+    git push origin main
 }
 
 gh_cd() {
