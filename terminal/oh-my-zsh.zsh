@@ -1,1 +1,1 @@
- ZSH_THEME=powerlevel10k/powerlevel10k
+ export ZSH_THEME=powerlevel10k/powerlevel10k
