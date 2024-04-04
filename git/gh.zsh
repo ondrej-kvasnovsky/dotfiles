@@ -18,11 +18,18 @@ gh_browse() {
 }
 
 gh_clone() {
-    git clone "ssh://git@github.com/$1.git" ~/Projects/github/$1
+    REPO=$(echo "$1" | cut -d '/' -f 2)
+    if [[ "$1" == corp/* ]]; then
+        : ${GHE_HOST?"GHE_HOST must be set"}
+        git clone --recursive "https://$GHE_HOST/$1.git" ~/Projects/github/$1
+        POSSIBLE_FORK="https://$GHE_HOST/$GHE_USER/$REPO.git"
+    else
+        git clone --recursive "ssh://git@github.com/$1.git" ~/Projects/github/$1
+        POSSIBLE_FORK="ssh://git@github.com/$GH_USER/$REPO.git"
+    fi
     gh_cd "$1"
 
-    REPO=$(echo "$1" | cut -d '/' -f 2)
-    POSSIBLE_FORK="ssh://git@github.com/$GH_USER/$REPO.git"
+    echo $POSSIBLE_FORK
     git ls-remote "$POSSIBLE_FORK" --exit-code &> /dev/null
     if [ $? = 0 ]; then
         echo "Fork found. Origin will be $POSSIBLE_FORK"
