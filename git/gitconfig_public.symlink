@@ -1,36 +1,42 @@
-[include]
-    path = ~/.gitconfig_local
 [core]
-	excludesfile = /Users/mchalupa/.gitignore_global
+    excludesfile = ~/.gitignore_global
     pager = "diff-so-fancy | less --tabs=4 -RFX"
 [diff-so-fancy]
     markEmptyLines = false
-	first-run = false
+    first-run = false
 [color]
-	ui = true
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+    ui = true
+[color "diff-hightlight"]
+    oldNormal = "red bold"
+    oldHighlight = "red bold 52"
+    newNormal = "green bold"
+    newHighlight = "green bold 22"
 [color "diff"]
-	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+    meta = "yellow"
+    frag = "magenta bold"
+    commit = "yellow bold"
+    old = "red bold"
+    new = "green bold"
+    whitespace = "red reverse"
 [credential]
     helper = osxkeychain
+[init]
+    defaultBranch = main
 [push]
     default = current
+    autoSetupRemote = true
 [merge]
     ff = only
 [pull]
     default = current
-	ff = true
+    ff = only
 [rebase]
     autosquash = true
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 [alias]
     aliases = config --get-regexp alias 
 
@@ -54,6 +60,7 @@
     ppd = !git pull --rebase && git push origin develop
     please = push --force-with-lease
     purr = pull --rebase
+    pt = !sh -c 'git tag $1 && git push --atomic origin $(git branch --show-current) $1' -
     
     cl = clean
     clb = !git branch -d $(git branch --merged | sed '/master/d' | sed '/*/d') && git remote prune origin
@@ -62,6 +69,7 @@
     sw = switch
     br = branch
     bra = branch -ra
+    sw = switch
 
     # list commands
     le = log --oneline --decorate
@@ -133,6 +141,8 @@
 
     #grumble
     ffs = "!git all && git commit --amend"
+
+    root = rev-parse --show-toplevel
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

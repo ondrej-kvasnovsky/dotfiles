@@ -1,5 +1,3 @@
-#!/bin/sh
-
 gh_help(){
     echo "Usage: gh <subcommand> [options]\n"
     echo "Subcommands:"
