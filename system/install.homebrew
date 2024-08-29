@@ -1,6 +1,8 @@
+asciinema
 bash
 coreutils
 curl
+dos2unix
 findutils
 flock
 fpp
@@ -8,11 +10,6 @@ gnu-sed
 grc
 httpie
 jq
-fx
-the_silver_searcher
-tree
-wget
-zsh
 lolcat
 moreutils
 pkgdiff

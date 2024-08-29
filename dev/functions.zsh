@@ -1,5 +1,5 @@
 function gradleDebug() {
-    gw -Dorg.gradle.debug=true --no-daemon "$@"
+    GRADLE_OPTS="-Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=y" gw --no-daemon "$@"
 }
 
 function gradleUserHomeLocal() {

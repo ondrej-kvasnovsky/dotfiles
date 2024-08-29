@@ -5,13 +5,6 @@ out/
 *.ipr
 *.iml
 *.iws
-out/
-classes/
-build/
-bin/
-.classpath
-.project
-.settings
 *.hprof
 *.hprof.*
 .java-version

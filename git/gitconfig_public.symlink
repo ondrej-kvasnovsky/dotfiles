@@ -51,7 +51,7 @@
     c = commit
     cm = commit -m
     cma = commit -a -m
-    ca = commit --amend -C HEAD
+    ca = commit --amend
     commend = commit --amend --no-edit
     
     pm = push origin master
@@ -143,9 +143,3 @@
     ffs = "!git all && git commit --amend"
 
     root = rev-parse --show-toplevel
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true

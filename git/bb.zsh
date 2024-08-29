@@ -25,17 +25,6 @@ bb_clone() {
     : ${BB_HOST?"BB_HOST must be set"}
     git clone --recursive "ssh://git@$BB_HOST/$1.git" ~/Projects/bb/$1
     bb_cd "$1"
-    
-    REPO=$(echo "$1" | cut -d '/' -f 2)
-    POSSIBLE_FORK="ssh://git@$BB_HOST/$BB_FORK_SPACE/$REPO.git"
-    git ls-remote "$POSSIBLE_FORK" --exit-code &> /dev/null
-    if [ $? = 0 ]; then
-        echo "Fork found. Origin will be $POSSIBLE_FORK"
-        git remote rename origin upstream
-        git remote add origin $POSSIBLE_FORK
-    else
-        echo "No fork found."
-    fi
 }
 
 bb_cd() {
