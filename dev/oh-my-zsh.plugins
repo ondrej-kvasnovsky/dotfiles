@@ -1,1 +1,3 @@
-mvn history zsh-autosuggestions
+mvn
+history
+zsh-autosuggestions
