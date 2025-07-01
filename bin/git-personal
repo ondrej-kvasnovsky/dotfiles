@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Use environment variables with fallback defaults
+GIT_USERNAME="${GIT_USER:-Ondrej Kvasnovsky}"
+GIT_EMAIL="${GIT_EMAIL:-ondrej.kvasnovsky@gmail.com}"
+
+# Function to show current config
+show_config() {
+    echo "Current Git configuration:"
+    echo "Username: $(git config user.name)"
+    echo "Email: $(git config user.email)"
+}
+
+echo "Setting Git configuration..."
+git config user.name "$GIT_USERNAME"
+git config user.email "$GIT_EMAIL"
+
+echo "Git username set to: $GIT_USERNAME"
+echo "Git email set to: $GIT_EMAIL"
+echo ""
+show_config
